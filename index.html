@@ -1,0 +1,82 @@
+Այո՛ ❤️ Պատրաստեցի թարմացված **ամբողջական `index.html`** տարբերակը՝
+
+- **English / Italiano / Русский**
+- **աշխատող Music button**
+- **The Ceremony → Noravank Monastery + map link**
+- **Dvin Music Hall** որպես reception / dinner venue
+- **The Celebration** բաժնում համապատասխան նկար
+- **մեկ ֆայլով**՝ HTML + CSS + JavaScript միասին
+
+## Ահա ամբողջական կոդի ֆայլը
+**Բացիր սա և ամբողջը copy/paste արա GitHub-ի `index.html` մեջ.**
+
+:chatgpt-content-reference{index="0"}[Բացել ամբողջական նոր կոդը](sandbox:/mnt/data/wedding_multilingual_noravank_dvin_index.html)
+
+---
+
+## Ինչպես դնել GitHub-ում
+1. Բացիր քո repository-ն  
+2. Բացիր `index.html`  
+3. Սեղմիր **Edit**  
+4. Ջնջիր հին ամբողջ կոդը  
+5. Բացված ֆայլից ամբողջը copy → paste արա  
+6. Սեղմիր **Commit changes**
+
+---
+
+## Կարևոր՝ երաժշտության մասին
+Ես կոդը սարքել եմ այնպես, որ **Music կոճակը հաստատ աշխատի**։
+
+### Հիմա այն աշխատում է 2 տարբերակով.
+**1. Եթե `CONFIG.musicUrl` դատարկ է**  
+→ կաշխատի ներկառուցված ռոմանտիկ instrumental fallback music-ը
+
+**2. Եթե ուզում ես հենց այս կոնկրետ երգը**
+**Elise Noiret – Les Reflets du Vieux Miroir**  
+→ պետք է `CONFIG.musicUrl` դաշտում դնես այդ երգի **ուղիղ `.mp3` հղումը**
+
+Կոդի մեջ գտիր սա՝
+
+```js
+const CONFIG = {
+  coupleEmail: 'couple@example.com',
+  weddingStart: '2027-06-19T11:00:00Z',
+  weddingEnd: '2027-06-19T19:00:00Z',
+  venue: 'Noravank Monastery, Armenia / Dvin Music Hall, Yerevan',
+  musicUrl: '',
+  musicTitle: 'Elise Noiret – Les Reflets du Vieux Miroir'
+};
+```
+
+Եթե հետո ունենաս երգի ուղիղ mp3 հղումը, `musicUrl: ''`-ի փոխարեն պետք է դնես, օրինակ՝
+
+```js
+musicUrl: 'https://yourdomain.com/audio/elise-noiret-les-reflets-du-vieux-miroir.mp3'
+```
+
+---
+
+## Ինչ եմ արդեն փոխել ֆայլի մեջ
+- **The Celebration** բաժնում դրված է wedding celebration photo
+- **The Ceremony** բաժնում նշված է **Noravank Monastery**
+- Noravank-ի վրա կա **map link**
+- Ավելացված է **Dvin Music Hall**
+- Venue page-ում կան երկու location cards  
+  - **Noravank Monastery**
+  - **Dvin Music Hall**
+- Լեզուները աշխատում են վերևի ընտրիչով
+
+---
+
+## Եթե ուզում ես՝ հաջորդ քայլով կարող եմ անել նաև սա
+Ես կարող եմ հիմա քեզ տալ նաև **ավելի ուժեղ, արդեն վերջնական premium տարբերակ**, որտեղ՝
+
+- անունները լինեն ձեր ուզած իրական անուններով
+- ամսաթիվը փոխենք
+- Նորավանքի նկարը փոխենք ուրիշով, եթե սա չհավանես
+- Dvin Music Hall-ի հատվածը ավելի շքեղ դարձնենք
+- ավելացնենք **Armenian լեզուն** նաև
+- RSVP-ն դարձնենք ավելի գեղեցիկ
+
+Եթե ուզես, հաջորդ հաղորդագրությամբ կարող եմ քեզ տալ նաև  
+**միայն այն կետերը, որոնք պետք է փոխես կոդի մեջ**՝ շատ հեշտ ձևով, տող առ տող։
