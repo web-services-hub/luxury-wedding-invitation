@@ -1,82 +1,632 @@
-Այո՛ ❤️ Պատրաստեցի թարմացված **ամբողջական `index.html`** տարբերակը՝
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Anna & David — Wedding Invitation</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Great+Vibes&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --sage:#9CAF88;
+    --sage-dark:#7A8F6A;
+    --sage-light:#C5D1B8;
+    --beige:#E8DCC4;
+    --beige-light:#F5EFE0;
+    --beige-warm:#D4C5A9;
+    --gold:#C9A961;
+    --text:#3D3D3D;
+    --muted:#6B6B6B;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Montserrat',sans-serif;
+    color:var(--text);
+    background:var(--beige-light);
+    line-height:1.6;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,.serif{font-family:'Cormorant Garamond',serif;font-weight:400}
+  .script{font-family:'Great Vibes',cursive}
 
-- **English / Italiano / Русский**
-- **աշխատող Music button**
-- **The Ceremony → Noravank Monastery + map link**
-- **Dvin Music Hall** որպես reception / dinner venue
-- **The Celebration** բաժնում համապատասխան նկար
-- **մեկ ֆայլով**՝ HTML + CSS + JavaScript միասին
+  /* ============ NAV ============ */
+  nav{
+    position:fixed;top:0;left:0;right:0;z-index:100;
+    padding:18px 40px;
+    display:flex;justify-content:space-between;align-items:center;
+    background:rgba(245,239,224,.85);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid rgba(156,175,136,.2);
+    transition:all .4s;
+  }
+  nav .logo{font-family:'Great Vibes',cursive;font-size:28px;color:var(--sage-dark)}
+  nav ul{display:flex;gap:32px;list-style:none}
+  nav a{
+    text-decoration:none;color:var(--text);
+    font-size:12px;letter-spacing:2px;text-transform:uppercase;
+    transition:color .3s;
+  }
+  nav a:hover{color:var(--sage-dark)}
 
-## Ահա ամբողջական կոդի ֆայլը
-**Բացիր սա և ամբողջը copy/paste արա GitHub-ի `index.html` մեջ.**
+  /* ============ HERO ============ */
+  .hero{
+    height:100vh;width:100%;
+    background:linear-gradient(rgba(61,61,61,.25),rgba(61,61,61,.45)),
+      url('https://images.unsplash.com/photo-1519741497674-611481863552?w=1920&q=80') center/cover no-repeat;
+    display:flex;flex-direction:column;justify-content:center;align-items:center;
+    color:#fff;text-align:center;
+    position:relative;
+  }
+  .hero::before{
+    content:'';position:absolute;inset:30px;
+    border:1px solid rgba(255,255,255,.35);
+    pointer-events:none;
+  }
+  .hero .save{
+    font-size:12px;letter-spacing:6px;text-transform:uppercase;
+    opacity:0;animation:fadeDown 1.2s .3s forwards;
+  }
+  .hero .names{
+    font-family:'Great Vibes',cursive;
+    font-size:clamp(60px,10vw,140px);
+    margin:20px 0;
+    opacity:0;animation:fadeUp 1.4s .8s forwards;
+    line-height:1;
+  }
+  .hero .and{
+    font-family:'Cormorant Garamond',serif;
+    font-style:italic;font-size:clamp(24px,3vw,36px);
+    margin:10px 0;
+    opacity:0;animation:fadeUp 1.2s 1.2s forwards;
+  }
+  .hero .date{
+    font-size:14px;letter-spacing:4px;text-transform:uppercase;
+    margin-top:30px;
+    opacity:0;animation:fadeUp 1.2s 1.6s forwards;
+  }
+  .hero .divider{
+    width:60px;height:1px;background:var(--gold);
+    margin:20px auto;
+    opacity:0;animation:fadeUp 1.2s 1.4s forwards;
+  }
+  .scroll-hint{
+    position:absolute;bottom:40px;left:50%;transform:translateX(-50%);
+    color:#fff;font-size:10px;letter-spacing:3px;text-transform:uppercase;
+    opacity:0;animation:fadeUp 1.2s 2s forwards,bounce 2s 3s infinite;
+  }
 
-:chatgpt-content-reference{index="0"}[Բացել ամբողջական նոր կոդը](sandbox:/mnt/data/wedding_multilingual_noravank_dvin_index.html)
+  @keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+  @keyframes fadeDown{from{opacity:0;transform:translateY(-30px)}to{opacity:1;transform:translateY(0)}}
+  @keyframes bounce{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(-10px)}}
 
----
+  /* ============ SECTIONS ============ */
+  section{padding:120px 40px;position:relative}
+  .section-title{
+    text-align:center;margin-bottom:60px;
+  }
+  .section-title .small{
+    font-size:11px;letter-spacing:5px;text-transform:uppercase;
+    color:var(--sage-dark);margin-bottom:12px;display:block;
+  }
+  .section-title h2{
+    font-size:clamp(40px,6vw,64px);
+    color:var(--text);
+    font-weight:300;
+  }
+  .section-title .ornament{
+    display:flex;align-items:center;justify-content:center;gap:12px;
+    margin-top:16px;color:var(--gold);
+  }
+  .section-title .ornament::before,.section-title .ornament::after{
+    content:'';width:60px;height:1px;background:var(--gold);
+  }
 
-## Ինչպես դնել GitHub-ում
-1. Բացիր քո repository-ն  
-2. Բացիր `index.html`  
-3. Սեղմիր **Edit**  
-4. Ջնջիր հին ամբողջ կոդը  
-5. Բացված ֆայլից ամբողջը copy → paste արա  
-6. Սեղմիր **Commit changes**
+  /* ============ COUPLE ============ */
+  .couple{background:var(--beige-light)}
+  .couple-wrap{
+    max-width:1100px;margin:0 auto;
+    display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;
+  }
+  .couple-img{
+    position:relative;
+    aspect-ratio:3/4;
+    overflow:hidden;
+    border-radius:4px;
+    box-shadow:0 30px 60px rgba(0,0,0,.15);
+    opacity:0;transform:translateY(60px) scale(.95);
+    transition:all 1.4s cubic-bezier(.2,.8,.2,1);
+  }
+  .couple-img.in{opacity:1;transform:translateY(0) scale(1)}
+  .couple-img img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s}
+  .couple-img:hover img{transform:scale(1.05)}
+  .couple-img::after{
+    content:'';position:absolute;inset:15px;
+    border:1px solid rgba(255,255,255,.5);pointer-events:none;
+  }
+  .couple-text{padding:20px 0}
+  .couple-text .script{font-size:48px;color:var(--sage-dark);margin-bottom:10px}
+  .couple-text p{
+    font-size:15px;color:var(--muted);margin-bottom:20px;
+    font-style:italic;
+  }
+  .couple-text .quote{
+    font-family:'Cormorant Garamond',serif;
+    font-size:22px;font-style:italic;
+    color:var(--text);
+    border-left:2px solid var(--gold);
+    padding-left:20px;margin-top:30px;
+  }
 
----
+  /* ============ CELEBRATION ============ */
+  .celebration{
+    background:var(--beige);
+    text-align:center;
+  }
+  .celebration-img{
+    max-width:1200px;margin:0 auto;
+    aspect-ratio:16/9;
+    overflow:hidden;border-radius:4px;
+    box-shadow:0 30px 60px rgba(0,0,0,.15);
+    position:relative;
+    opacity:0;transform:scale(.9);
+    transition:all 1.4s cubic-bezier(.2,.8,.2,1);
+  }
+  .celebration-img.in{opacity:1;transform:scale(1)}
+  .celebration-img img{width:100%;height:100%;object-fit:cover}
+  .celebration-img::before{
+    content:'';position:absolute;inset:0;
+    background:linear-gradient(transparent 60%,rgba(0,0,0,.4));
+    z-index:1;
+  }
+  .celebration-img .caption{
+    position:absolute;bottom:30px;left:0;right:0;z-index:2;
+    color:#fff;font-family:'Cormorant Garamond',serif;
+    font-size:28px;font-style:italic;
+  }
 
-## Կարևոր՝ երաժշտության մասին
-Ես կոդը սարքել եմ այնպես, որ **Music կոճակը հաստատ աշխատի**։
+  /* ============ CEREMONY ============ */
+  .ceremony{background:var(--beige-light)}
+  .ceremony-wrap{
+    max-width:1100px;margin:0 auto;
+    display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;
+  }
+  .ceremony-text h3{
+    font-size:42px;color:var(--sage-dark);margin-bottom:20px;
+  }
+  .ceremony-text .label{
+    font-size:11px;letter-spacing:4px;text-transform:uppercase;
+    color:var(--gold);margin-bottom:16px;display:block;
+  }
+  .ceremony-text p{color:var(--muted);margin-bottom:20px}
+  .ceremony-text .time{
+    display:flex;gap:30px;margin:30px 0;
+    padding:20px 0;border-top:1px solid var(--beige-warm);border-bottom:1px solid var(--beige-warm);
+  }
+  .ceremony-text .time div{flex:1}
+  .ceremony-text .time strong{
+    display:block;font-family:'Cormorant Garamond',serif;
+    font-size:28px;color:var(--sage-dark);font-weight:500;
+  }
+  .ceremony-text .time span{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--muted)}
+  .map-link{
+    display:inline-flex;align-items:center;gap:10px;
+    padding:14px 32px;
+    background:var(--sage);color:#fff;
+    text-decoration:none;font-size:12px;letter-spacing:3px;text-transform:uppercase;
+    border-radius:2px;transition:all .3s;
+    margin-top:10px;
+  }
+  .map-link:hover{background:var(--sage-dark);transform:translateY(-2px);box-shadow:0 10px 20px rgba(156,175,136,.3)}
+  .ceremony-img{
+    aspect-ratio:4/5;overflow:hidden;border-radius:4px;
+    box-shadow:0 30px 60px rgba(0,0,0,.15);
+    opacity:0;transform:translateX(60px);
+    transition:all 1.4s cubic-bezier(.2,.8,.2,1);
+  }
+  .ceremony-img.in{opacity:1;transform:translateX(0)}
+  .ceremony-img img{width:100%;height:100%;object-fit:cover}
 
-### Հիմա այն աշխատում է 2 տարբերակով.
-**1. Եթե `CONFIG.musicUrl` դատարկ է**  
-→ կաշխատի ներկառուցված ռոմանտիկ instrumental fallback music-ը
+  /* ============ VENUE ============ */
+  .venue{background:var(--beige)}
+  .venue-grid{
+    max-width:1200px;margin:0 auto;
+    display:grid;grid-template-columns:1fr 1fr;gap:40px;
+  }
+  .venue-card{
+    background:var(--beige-light);
+    border-radius:4px;overflow:hidden;
+    box-shadow:0 20px 40px rgba(0,0,0,.08);
+    transition:all .5s;
+    opacity:0;transform:translateY(40px);
+  }
+  .venue-card.in{opacity:1;transform:translateY(0)}
+  .venue-card:hover{transform:translateY(-8px);box-shadow:0 30px 60px rgba(0,0,0,.15)}
+  .venue-card .img{
+    aspect-ratio:16/10;overflow:hidden;
+  }
+  .venue-card .img img{width:100%;height:100%;object-fit:cover;transition:transform .8s}
+  .venue-card:hover .img img{transform:scale(1.08)}
+  .venue-card .body{padding:36px}
+  .venue-card .tag{
+    font-size:10px;letter-spacing:3px;text-transform:uppercase;
+    color:var(--gold);margin-bottom:10px;display:block;
+  }
+  .venue-card h3{
+    font-size:32px;color:var(--sage-dark);margin-bottom:14px;
+  }
+  .venue-card p{color:var(--muted);font-size:14px;margin-bottom:20px}
+  .venue-card .info{
+    display:flex;gap:20px;padding-top:20px;border-top:1px solid var(--beige-warm);
+    font-size:13px;color:var(--text);
+  }
+  .venue-card .info span{display:flex;align-items:center;gap:8px}
 
-**2. Եթե ուզում ես հենց այս կոնկրետ երգը**
-**Elise Noiret – Les Reflets du Vieux Miroir**  
-→ պետք է `CONFIG.musicUrl` դաշտում դնես այդ երգի **ուղիղ `.mp3` հղումը**
+  /* ============ CALENDAR ============ */
+  .calendar-section{
+    background:linear-gradient(rgba(156,175,136,.15),rgba(156,175,136,.15)),
+      url('https://images.unsplash.com/photo-1529636798458-92182e662485?w=1920&q=80') center/cover fixed no-repeat;
+    text-align:center;color:#fff;
+    padding:140px 40px;
+  }
+  .calendar-section .section-title h2{color:#fff}
+  .calendar-section .section-title .small{color:var(--beige)}
+  .calendar-section .section-title .ornament{color:var(--beige)}
+  .calendar-section .section-title .ornament::before,
+  .calendar-section .section-title .ornament::after{background:var(--beige)}
+  .calendar{
+    max-width:480px;margin:0 auto;
+    background:rgba(245,239,224,.95);
+    backdrop-filter:blur(10px);
+    padding:40px;border-radius:4px;
+    color:var(--text);
+    box-shadow:0 30px 60px rgba(0,0,0,.25);
+  }
+  .calendar .month{
+    font-family:'Cormorant Garamond',serif;
+    font-size:36px;color:var(--sage-dark);margin-bottom:20px;
+  }
+  .calendar .grid{
+    display:grid;grid-template-columns:repeat(7,1fr);gap:4px;
+    margin-bottom:20px;
+  }
+  .calendar .grid .day-name{
+    font-size:10px;letter-spacing:2px;text-transform:uppercase;
+    color:var(--muted);padding:8px 0;
+  }
+  .calendar .grid .day{
+    aspect-ratio:1;display:flex;align-items:center;justify-content:center;
+    font-size:14px;color:var(--text);border-radius:50%;
+    transition:all .3s;
+  }
+  .calendar .grid .day.empty{visibility:hidden}
+  .calendar .grid .day.highlight{
+    background:var(--sage);color:#fff;font-weight:500;
+    box-shadow:0 4px 12px rgba(156,175,136,.4);
+  }
+  .calendar .big-date{
+    font-family:'Great Vibes',cursive;
+    font-size:72px;color:var(--sage-dark);
+    margin-top:20px;line-height:1;
+  }
+  .calendar .big-date-sub{
+    font-size:12px;letter-spacing:4px;text-transform:uppercase;
+    color:var(--muted);margin-top:10px;
+  }
 
-Կոդի մեջ գտիր սա՝
+  /* ============ RSVP ============ */
+  .rsvp{background:var(--beige-light)}
+  .rsvp-form{
+    max-width:600px;margin:0 auto;
+    background:#fff;padding:50px;border-radius:4px;
+    box-shadow:0 20px 50px rgba(0,0,0,.08);
+  }
+  .rsvp-form .field{margin-bottom:24px}
+  .rsvp-form label{
+    display:block;font-size:11px;letter-spacing:3px;text-transform:uppercase;
+    color:var(--sage-dark);margin-bottom:8px;
+  }
+  .rsvp-form input,.rsvp-form select,.rsvp-form textarea{
+    width:100%;padding:14px 16px;
+    border:1px solid var(--beige-warm);background:var(--beige-light);
+    font-family:inherit;font-size:14px;color:var(--text);
+    border-radius:2px;transition:all .3s;
+  }
+  .rsvp-form input:focus,.rsvp-form select:focus,.rsvp-form textarea:focus{
+    outline:none;border-color:var(--sage);background:#fff;
+  }
+  .rsvp-form textarea{resize:vertical;min-height:100px}
+  .rsvp-form .radio-group{display:flex;gap:16px;margin-top:8px}
+  .rsvp-form .radio-group label{
+    flex:1;padding:14px;border:1px solid var(--beige-warm);
+    background:var(--beige-light);cursor:pointer;text-align:center;
+    letter-spacing:2px;font-size:12px;border-radius:2px;
+    transition:all .3s;
+  }
+  .rsvp-form .radio-group input{display:none}
+  .rsvp-form .radio-group input:checked + label{
+    background:var(--sage);color:#fff;border-color:var(--sage);
+  }
+  .rsvp-form button{
+    width:100%;padding:16px;
+    background:var(--sage);color:#fff;border:none;
+    font-size:12px;letter-spacing:4px;text-transform:uppercase;
+    cursor:pointer;border-radius:2px;
+    transition:all .3s;font-family:inherit;
+  }
+  .rsvp-form button:hover{background:var(--sage-dark);transform:translateY(-2px);box-shadow:0 10px 20px rgba(156,175,136,.3)}
+  .success-msg{
+    display:none;text-align:center;padding:30px;
+    color:var(--sage-dark);font-family:'Cormorant Garamond',serif;
+    font-size:24px;font-style:italic;
+  }
 
-```js
-const CONFIG = {
-  coupleEmail: 'couple@example.com',
-  weddingStart: '2027-06-19T11:00:00Z',
-  weddingEnd: '2027-06-19T19:00:00Z',
-  venue: 'Noravank Monastery, Armenia / Dvin Music Hall, Yerevan',
-  musicUrl: '',
-  musicTitle: 'Elise Noiret – Les Reflets du Vieux Miroir'
-};
-```
+  /* ============ FOOTER ============ */
+  footer{
+    background:var(--sage-dark);color:var(--beige-light);
+    padding:60px 40px;text-align:center;
+  }
+  footer .names{font-family:'Great Vibes',cursive;font-size:48px;margin-bottom:10px}
+  footer p{font-size:12px;letter-spacing:3px;text-transform:uppercase;opacity:.8}
 
-Եթե հետո ունենաս երգի ուղիղ mp3 հղումը, `musicUrl: ''`-ի փոխարեն պետք է դնես, օրինակ՝
+  /* ============ RESPONSIVE ============ */
+  @media(max-width:768px){
+    nav{padding:14px 20px}
+    nav ul{display:none}
+    section{padding:80px 20px}
+    .couple-wrap,.ceremony-wrap,.venue-grid{grid-template-columns:1fr;gap:40px}
+    .rsvp-form{padding:30px 20px}
+    .hero::before{inset:15px}
+  }
+</style>
+</head>
+<body>
 
-```js
-musicUrl: 'https://yourdomain.com/audio/elise-noiret-les-reflets-du-vieux-miroir.mp3'
-```
+<nav>
+  <div class="logo">A & D</div>
+  <ul>
+    <li><a href="#couple">Our Story</a></li>
+    <li><a href="#celebration">Celebration</a></li>
+    <li><a href="#ceremony">Ceremony</a></li>
+    <li><a href="#venue">Venue</a></li>
+    <li><a href="#rsvp">RSVP</a></li>
+  </ul>
+</nav>
 
----
+<!-- HERO -->
+<section class="hero">
+  <span class="save">Together with their families</span>
+  <div class="names">Anna & David</div>
+  <div class="and">are getting married</div>
+  <div class="divider"></div>
+  <div class="date">December 12 · 2026 · Armenia</div>
+  <div class="scroll-hint">Scroll ↓</div>
+</section>
 
-## Ինչ եմ արդեն փոխել ֆայլի մեջ
-- **The Celebration** բաժնում դրված է wedding celebration photo
-- **The Ceremony** բաժնում նշված է **Noravank Monastery**
-- Noravank-ի վրա կա **map link**
-- Ավելացված է **Dvin Music Hall**
-- Venue page-ում կան երկու location cards  
-  - **Noravank Monastery**
-  - **Dvin Music Hall**
-- Լեզուները աշխատում են վերևի ընտրիչով
+<!-- COUPLE -->
+<section class="couple" id="couple">
+  <div class="section-title">
+    <span class="small">Our Story</span>
+    <h2>The Couple</h2>
+    <div class="ornament">✦</div>
+  </div>
+  <div class="couple-wrap">
+    <div class="couple-img reveal">
+      <img src="https://images.unsplash.com/photo-1529634597503-139d372655f4?w=900&q=80" alt="The Couple">
+    </div>
+    <div class="couple-text">
+      <div class="script">Anna & David</div>
+      <p>Two hearts, one journey. From the moment our paths crossed, we knew our story was just beginning. Every sunset, every quiet morning, every adventure — all better because we share it together.</p>
+      <p>Now, surrounded by the people we love most, we invite you to witness the next beautiful chapter of our love story.</p>
+      <div class="quote">"In all the world, there is no heart for me like yours."</div>
+    </div>
+  </div>
+</section>
 
----
+<!-- CELEBRATION -->
+<section class="celebration" id="celebration">
+  <div class="section-title">
+    <span class="small">The Celebration</span>
+    <h2>Join Our Joy</h2>
+    <div class="ornament">✦</div>
+  </div>
+  <div class="celebration-img reveal">
+    <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=1400&q=80" alt="Wedding Celebration">
+    <div class="caption">An evening of love, laughter, and celebration</div>
+  </div>
+</section>
 
-## Եթե ուզում ես՝ հաջորդ քայլով կարող եմ անել նաև սա
-Ես կարող եմ հիմա քեզ տալ նաև **ավելի ուժեղ, արդեն վերջնական premium տարբերակ**, որտեղ՝
+<!-- CEREMONY -->
+<section class="ceremony" id="ceremony">
+  <div class="section-title">
+    <span class="small">The Ceremony</span>
+    <h2>Sacred Vows</h2>
+    <div class="ornament">✦</div>
+  </div>
+  <div class="ceremony-wrap">
+    <div class="ceremony-text">
+      <span class="label">Ceremony Location</span>
+      <h3>Noravank Monastery</h3>
+      <p>Nestled among the breathtaking red cliffs of the Amaghu Valley, the 13th-century Noravank Monastery stands as a timeless witness to love. Its ancient stones and sacred atmosphere will frame the most precious moment of our lives.</p>
+      <div class="time">
+        <div>
+          <strong>3:00 PM</strong>
+          <span>Ceremony</span>
+        </div>
+        <div>
+          <strong>4:30 PM</strong>
+          <span>Photos & Cocktails</span>
+        </div>
+        <div>
+          <strong>6:00 PM</strong>
+          <span>Reception</span>
+        </div>
+      </div>
+      <a href="https://www.google.com/maps/place/Noravank+Monastery" target="_blank" class="map-link">
+        📍 View on Map
+      </a>
+    </div>
+    <div class="ceremony-img reveal">
+      <img src="https://images.unsplash.com/photo-1609229893-2a0e3c4a9b1f?w=900&q=80" alt="Noravank Monastery">
+    </div>
+  </div>
+</section>
 
-- անունները լինեն ձեր ուզած իրական անուններով
-- ամսաթիվը փոխենք
-- Նորավանքի նկարը փոխենք ուրիշով, եթե սա չհավանես
-- Dvin Music Hall-ի հատվածը ավելի շքեղ դարձնենք
-- ավելացնենք **Armenian լեզուն** նաև
-- RSVP-ն դարձնենք ավելի գեղեցիկ
+<!-- VENUE -->
+<section class="venue" id="venue">
+  <div class="section-title">
+    <span class="small">The Venues</span>
+    <h2>Where We Celebrate</h2>
+    <div class="ornament">✦</div>
+  </div>
+  <div class="venue-grid">
+    <div class="venue-card reveal">
+      <div class="img">
+        <img src="https://images.unsplash.com/photo-1548795194-c57e01a60d0f?w=900&q=80" alt="Noravank">
+      </div>
+      <div class="body">
+        <span class="tag">Ceremony</span>
+        <h3>Noravank Monastery</h3>
+        <p>A 13th-century architectural masterpiece set among dramatic red cliffs. The sacred grounds will host our intimate ceremony surrounded by centuries of history.</p>
+        <div class="info">
+          <span>🕐 3:00 PM</span>
+          <span>📍 Vayots Dzor</span>
+        </div>
+      </div>
+    </div>
+    <div class="venue-card reveal">
+      <div class="img">
+        <img src="https://images.unsplash.com/photo-1519167758481-43f5a5f45b69?w=900&q=80" alt="Dvin Music Hall">
+      </div>
+      <div class="body">
+        <span class="tag">Reception</span>
+        <h3>Dvin Music Hall</h3>
+        <p>An elegant venue where music, dance, and celebration come together. Join us for an unforgettable evening of joy, toasts, and dancing under the stars.</p>
+        <div class="info">
+          <span>🕐 7:00 PM</span>
+          <span>📍 Yerevan</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-Եթե ուզես, հաջորդ հաղորդագրությամբ կարող եմ քեզ տալ նաև  
-**միայն այն կետերը, որոնք պետք է փոխես կոդի մեջ**՝ շատ հեշտ ձևով, տող առ տող։
+<!-- CALENDAR -->
+<section class="calendar-section" id="calendar">
+  <div class="section-title">
+    <span class="small">Save The Date</span>
+    <h2>Mark Your Calendar</h2>
+    <div class="ornament">✦</div>
+  </div>
+  <div class="calendar">
+    <div class="month">December 2026</div>
+    <div class="grid">
+      <div class="day-name">Sun</div><div class="day-name">Mon</div><div class="day-name">Tue</div>
+      <div class="day-name">Wed</div><div class="day-name">Thu</div><div class="day-name">Fri</div><div class="day-name">Sat</div>
+      <div class="day empty"></div><div class="day empty"></div>
+      <div class="day">1</div><div class="day">2</div><div class="day">3</div><div class="day">4</div><div class="day">5</div>
+      <div class="day">6</div><div class="day">7</div><div class="day">8</div><div class="day">9</div><div class="day">10</div><div class="day">11</div>
+      <div class="day highlight">12</div>
+      <div class="day">13</div><div class="day">14</div><div class="day">15</div><div class="day">16</div><div class="day">17</div><div class="day">18</div><div class="day">19</div>
+      <div class="day">20</div><div class="day">21</div><div class="day">22</div><div class="day">23</div><div class="day">24</div><div class="day">25</div><div class="day">26</div>
+      <div class="day">27</div><div class="day">28</div><div class="day">29</div><div class="day">30</div><div class="day">31</div>
+    </div>
+    <div class="big-date">12.12.2026</div>
+    <div class="big-date-sub">Saturday · Save The Date</div>
+  </div>
+</section>
+
+<!-- RSVP -->
+<section class="rsvp" id="rsvp">
+  <div class="section-title">
+    <span class="small">Be Our Guest</span>
+    <h2>RSVP</h2>
+    <div class="ornament">✦</div>
+  </div>
+  <form class="rsvp-form" id="rsvpForm">
+    <div class="field">
+      <label>Full Name</label>
+      <input type="text" name="name" required placeholder="Your name">
+    </div>
+    <div class="field">
+      <label>Email</label>
+      <input type="email" name="email" required placeholder="your@email.com">
+    </div>
+    <div class="field">
+      <label>Will you attend?</label>
+      <div class="radio-group">
+        <input type="radio" name="attend" id="yes" value="yes" required>
+        <label for="yes">Joyfully Accept</label>
+        <input type="radio" name="attend" id="no" value="no">
+        <label for="no">Respectfully Decline</label>
+      </div>
+    </div>
+    <div class="field">
+      <label>Number of Guests</label>
+      <select name="guests">
+        <option>1</option><option>2</option><option>3</option><option>4</option>
+      </select>
+    </div>
+    <div class="field">
+      <label>Message for the Couple</label>
+      <textarea name="message" placeholder="Share your wishes..."></textarea>
+    </div>
+    <button type="submit">Send RSVP</button>
+    <div class="success-msg" id="successMsg">
+      ✦ Thank you! Your response has been received. ✦
+    </div>
+  </form>
+</section>
+
+<footer>
+  <div class="names">Anna & David</div>
+  <p>12 · 12 · 2026</p>
+  <p style="margin-top:20px;font-size:10px;opacity:.6">Made with love</p>
+</footer>
+
+<script>
+  // Scroll reveal animations
+  const observer = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        entry.target.classList.add('in');
+      }
+    });
+  },{threshold:0.15});
+
+  document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+
+  // RSVP form
+  document.getElementById('rsvpForm').addEventListener('submit',function(e){
+    e.preventDefault();
+    const form = this;
+    const msg = document.getElementById('successMsg');
+    // Hide form fields, show success
+    Array.from(form.elements).forEach(el=>{
+      if(el.tagName !== 'FORM') el.style.display = 'none';
+    });
+    msg.style.display = 'block';
+    setTimeout(()=>{
+      form.reset();
+      Array.from(form.elements).forEach(el=>{
+        if(el.tagName !== 'FORM' && el.type !== 'submit') el.style.display = '';
+      });
+      form.querySelector('button').style.display = '';
+      msg.style.display = 'none';
+    },4000);
+  });
+
+  // Nav background on scroll
+  window.addEventListener('scroll',()=>{
+    const nav = document.querySelector('nav');
+    if(window.scrollY > 50){
+      nav.style.padding = '12px 40px';
+      nav.style.boxShadow = '0 4px 20px rgba(0,0,0,.05)';
+    } else {
+      nav.style.padding = '18px 40px';
+      nav.style.boxShadow = 'none';
+    }
+  });
+</script>
+
+</body>
+</html>
