@@ -311,9 +311,19 @@
 </div>
 
 <!-- 🎵 AUDIO: ՓՈԽԱՐԻՆԵՔ src-ը ձեր MP3 ֆայլի հղումով -->
-<audio id="bgMusic" loop preload="auto">
-  <source src="https://cdn.pixabay.com/download/audio/2022/03/10/audio_c8c8a73467.mp3?filename=piano-moment-11155.mp3" type="audio/mpeg">
-</audio>
+<div id="youtubeMusic" style="margin-top:10px;">
+  <iframe
+    width="240"
+    height="135"
+    src="https://www.youtube.com/embed/SSzDMLoSJlI"
+    title="Élise Noiret - Wedding Music"
+    allow="accelerometer; autoplay; encrypted-media; picture-in-picture"
+    allowfullscreen
+    style="border:0; border-radius:12px;">
+  </iframe>
+</div>
+
+<script src="https://www.youtube.com/iframe_api"></script>
 
 <nav id="mainNav">
   <div class="logo">
@@ -812,12 +822,7 @@
     intro.classList.add('hidden');
     
     // Try to play music immediately on click
-    bgMusic.volume = 0.5; // Set comfortable volume
-    bgMusic.play().then(() => {
-      setPlaying(true);
-    }).catch(e => {
-      console.log("Audio play prevented:", e);
-    });
+    // YouTube music will be controlled separately.;
     
     setTimeout(()=>{
       mainNav.classList.add('show');
@@ -841,15 +846,13 @@
     }
   }
   
-  musicBtn.addEventListener('click', ()=>{
-    if(isPlaying){ 
-      bgMusic.pause(); 
-      setPlaying(false); 
-    } else { 
-      bgMusic.play().then(()=>setPlaying(true)).catch(()=>{}); 
-    }
-  });
-
+ musicBtn.addEventListener('click', () => {
+  document.getElementById('youtubeMusic')
+    .scrollIntoView({
+      behavior: 'smooth',
+      block: 'center'
+    });
+});
   // ================= SCROLL REVEAL =================
   const observer = new IntersectionObserver((entries)=>{
     entries.forEach(entry=>{ if(entry.isIntersecting) entry.target.classList.add('in'); });
